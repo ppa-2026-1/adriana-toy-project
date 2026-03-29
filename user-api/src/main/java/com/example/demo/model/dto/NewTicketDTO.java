@@ -5,10 +5,10 @@ import java.util.List;
 import com.example.demo.model.enums.TicketStatus;
 
 public record NewTicketDTO(
-    int id,
+    Integer id,
     Integer id_solicitante,
-    Integer id_responsavel,
     Integer id_destinatario,
+    String acao,
     String equipamento,
     String detalhes,
     List<String> observadores,

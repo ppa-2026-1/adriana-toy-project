@@ -1,4 +1,4 @@
-DELETE FROM users;
+-- DELETE FROM users;
 DELETE FROM roles;
 
 INSERT INTO roles (name) VALUES

@@ -79,12 +79,28 @@ Host: {{host}}
 Content-Type: application/json
 
 {
-    "id_solicitante": 1,
-    "id_destinatario": 2,
+    "id_solicitante": 2,
+    "id_destinatario": 1,
+    "acao": "Manutenção",
     "detalhes": "Detalhes do ticket",
     "equipamento": "Equipamento do ticket",
-    "observadores": ["barara@gmail.com", "adriana@gmail.com"],
-    "status": "PENDENTE"
+    "observadores": ["batata@gmail.com", "adriana@gmail.com"]
+}
+
+### Create a new valid Ticket
+# @name = createNewTicket
+
+POST /api/v1/tickets HTTP/1.1
+Host: {{host}}
+Content-Type: application/json
+
+{
+    "id_solicitante": 2,
+    "id_destinatario": 1,
+    "acao": "Manutenção",
+    "detalhes": "CPU não liga",
+    "equipamento": "CPU",
+    "observadores": ["adriana@gmail.com"]
 }
 
 ### Create a new valid Ticket
@@ -96,35 +112,74 @@ Content-Type: application/json
 
 {
     "id_solicitante": 1,
-    "id_responsavel": 2,
-    "id_destinatario": 2,
     "detalhes": "Detalhes do ticket",
+    "acao": "Manutenção",
     "equipamento": "Equipamento do ticket",
-    "observadores": ["barara@gmail.com", "adriana@gmail.com"],
-    "status": "PENDENTE"
+    "observadores": ["batata@gmail.com", "adriana@gmail.com"]
 }
 
-### Try and create an invalid User
-# @name = tryCreateInvalidUser
 
-POST /api/v1/users HTTP/1.1
-Host: {{host}}
-Content-Type: application/json
-
-{
-    "email": "batata@potato.com",
-    "password": "1234",
-    "handle": "papas",
-    "name": "Kartofel",
-    "roles": [
-        "ROLE_USER"
-    ],
-    "company": "potato inc"
-}
-
-### Get all tickts
+### Get all tickets
 # @name= getAllTickets
 
 GET /api/v1/tickets HTTP/1.1
 Host: {{host}}
 Accept: application/json
+
+
+### Update a valid Ticket
+# @name = updateNewTicket
+
+PATCH /api/v1/tickets/1 HTTP/1.1
+Host: {{host}}
+Content-Type: application/json
+
+{
+    "id_responsavel": 2,
+    "status": "CANCELADO",
+    "motivo": "Falta detalhes para realizar o serviço"
+}
+
+### Update a valid Ticket
+# @name = updateNewTicket
+
+PATCH /api/v1/tickets/2 HTTP/1.1
+Host: {{host}}
+Content-Type: application/json
+
+{
+    "id_responsavel": 2,
+    "status": "CONCLUIDO"
+}
+
+
+### Update a invalid Ticket
+# @name = updateNewTicket
+
+PATCH /api/v1/tickets/3 HTTP/1.1
+Host: {{host}}
+Content-Type: application/json
+
+{
+    "id_responsavel": 2,
+    "status": "PENDENTE"
+}
+
+
+### Delete a Ticket
+# @name = deleteNewTicket
+
+DELETE /api/v1/tickets/3 HTTP/1.1
+Host: {{host}}
+
+### Update a deleted Ticket
+# @name = updateNewTicket
+
+PATCH /api/v1/tickets/3 HTTP/1.1
+Host: {{host}}
+Content-Type: application/json
+
+{
+    "id_responsavel": 2,
+    "status": "CONCLUIDO"
+}

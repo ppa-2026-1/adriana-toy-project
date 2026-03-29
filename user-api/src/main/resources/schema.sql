@@ -31,10 +31,12 @@ CREATE TABLE IF NOT EXISTS profiles (
 CREATE TABLE IF NOT EXISTS tickets (
     id   INTEGER      PRIMARY KEY AUTOINCREMENT,
     id_solicitante INTEGER NOT NULL,
-    id_responsavel INTEGER NOT NULL,
+    id_responsavel INTEGER,
     id_destinatario INTEGER NOT NULL,
+    acao VARCHAR(255) NOT NULL,
     equipamento VARCHAR(255) NOT NULL,
     detalhes VARCHAR(255) NOT NULL,
+    motivo VARCHAR(255),
     status TEXT CHECK(status IN ('PENDENTE', 'CANCELADO', 'CONCLUIDO')) NOT NULL,
     observadores VARCHAR(255),
     created_at TIMESTAMP,

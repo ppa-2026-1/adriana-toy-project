@@ -23,8 +23,15 @@ public class TicketRepository {
     }
 
     public Optional<Ticket> findByEquipment(String equipamento) {
-        return em.createQuery("FROM Ticket t WHERE t.equipamento = :handle", Ticket.class)
+        return em.createQuery("FROM Ticket t WHERE t.equipamento = :equipamento", Ticket.class)
                 .setParameter("equipamento", equipamento)
+                .getResultStream()
+                .findFirst();
+    }
+
+    public Optional<Ticket> findByAcao(String acao) {
+        return em.createQuery("FROM Ticket t WHERE t.acao = :acao", Ticket.class)
+                .setParameter("acao", acao)
                 .getResultStream()
                 .findFirst();
     }
@@ -41,5 +48,13 @@ public class TicketRepository {
         } else {
             em.merge(Ticket);
         }
+    }
+
+    @Transactional
+    public void delete(Ticket ticket) {
+        if (!em.contains(ticket)) {
+            ticket = em.merge(ticket);
+        }
+        em.remove(ticket);
     }
 }

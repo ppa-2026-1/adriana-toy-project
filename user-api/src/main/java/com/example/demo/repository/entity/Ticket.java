@@ -1,4 +1,5 @@
 package com.example.demo.repository.entity;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.example.demo.model.enums.TicketStatus;
@@ -21,6 +22,9 @@ public class Ticket {
     private Integer id;
 
     @Column(nullable = false, length = 255)
+    private String acao;
+
+    @Column(nullable = false, length = 255)
     private String equipamento;
     
     @Column(nullable = false, length = 255)
@@ -29,7 +33,7 @@ public class Ticket {
     @Column(nullable = false)
     private Integer id_solicitante;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Integer id_responsavel;
 
     @Column(nullable = false)
@@ -39,8 +43,17 @@ public class Ticket {
     @Column(nullable = false, length = 255)
     private TicketStatus status;
 
+    @Column(nullable = true, length = 255)
+    private String motivo;
+
     @Column(nullable = false, length = 255)
     private List<String> observadores;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
     public Integer getId() {
         return id;
@@ -104,6 +117,38 @@ public class Ticket {
 
     public void setObservadores(List<String> observadores) {
         this.observadores = observadores;
+    }
+
+    public String getAcao() {
+        return acao;
+    }
+
+    public void setAcao(String acao) {
+        this.acao = acao;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public String getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
     }
 
     
