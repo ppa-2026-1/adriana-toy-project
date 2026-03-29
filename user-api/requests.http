@@ -1,0 +1,130 @@
+# USER API ================================================================
+
+@host=localhost:8080
+
+### TODOS OS USUÁRIOS
+GET /api/v1/users HTTP/1.1
+Host: localhost:8080
+Accept: application/json
+
+
+### Get all users
+# @name= getAllUsers
+
+GET /api/v1/users HTTP/1.1
+Host: {{host}}
+Accept: application/json
+
+### Create a new valid User
+# @name = createNewUser
+
+POST /api/v1/users HTTP/1.1
+Host: {{host}}
+Content-Type: application/json
+
+{
+    "email": "batata@gmail.com",
+    "password": "1234RT56",
+    "handle": "papas",
+    "name": "Kartofel",
+    "roles": [
+        "ROLE_USER"
+    ],
+    "company": "potato inc"
+}
+
+### Create a new valid User
+# @name = createNewUser
+
+POST /api/v1/users HTTP/1.1
+Host: {{host}}
+Content-Type: application/json
+
+{
+    "email": "tomate@gmail.com",
+    "password": "1234RT56",
+    "handle": "tomate",
+    "name": "Tomate",
+    "roles": [
+        "ROLE_USER"
+    ],
+    "company": "tomate inc"
+}
+
+
+
+### Try and create an invalid User
+# @name = tryCreateInvalidUser
+
+POST /api/v1/users HTTP/1.1
+Host: {{host}}
+Content-Type: application/json
+
+{
+    "email": "batata@potato.com",
+    "password": "1234",
+    "handle": "papas",
+    "name": "Kartofel",
+    "roles": [
+        "ROLE_USER"
+    ],
+    "company": "potato inc"
+}
+
+### Create a new valid Ticket
+# @name = createNewTicket
+
+POST /api/v1/tickets HTTP/1.1
+Host: {{host}}
+Content-Type: application/json
+
+{
+    "id_solicitante": 1,
+    "id_destinatario": 2,
+    "detalhes": "Detalhes do ticket",
+    "equipamento": "Equipamento do ticket",
+    "observadores": ["barara@gmail.com", "adriana@gmail.com"],
+    "status": "PENDENTE"
+}
+
+### Create a new valid Ticket
+# @name = createNewTicket
+
+POST /api/v1/tickets HTTP/1.1
+Host: {{host}}
+Content-Type: application/json
+
+{
+    "id_solicitante": 1,
+    "id_responsavel": 2,
+    "id_destinatario": 2,
+    "detalhes": "Detalhes do ticket",
+    "equipamento": "Equipamento do ticket",
+    "observadores": ["barara@gmail.com", "adriana@gmail.com"],
+    "status": "PENDENTE"
+}
+
+### Try and create an invalid User
+# @name = tryCreateInvalidUser
+
+POST /api/v1/users HTTP/1.1
+Host: {{host}}
+Content-Type: application/json
+
+{
+    "email": "batata@potato.com",
+    "password": "1234",
+    "handle": "papas",
+    "name": "Kartofel",
+    "roles": [
+        "ROLE_USER"
+    ],
+    "company": "potato inc"
+}
+
+### Get all tickts
+# @name= getAllTickets
+
+GET /api/v1/tickets HTTP/1.1
+Host: {{host}}
+Accept: application/json
