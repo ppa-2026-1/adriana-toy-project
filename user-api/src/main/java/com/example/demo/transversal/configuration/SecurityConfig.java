@@ -23,7 +23,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/api/auth/**").permitAll() 
+                    .requestMatchers("/api/auth/**").permitAll()
+                    .requestMatchers(org.springframework.http.HttpMethod.POST, "/api/v1/users").permitAll()
                     .anyRequest().authenticated())
                 .headers(headers -> headers
                 .frameOptions(cust -> cust.sameOrigin()))

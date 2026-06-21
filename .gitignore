@@ -40,3 +40,7 @@ out/
 *.sqlite
 *.sqlite3
 *.db
+
+application-local.properties
+.env
+.env.*
